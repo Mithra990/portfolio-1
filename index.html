@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<style>
+/* ---------------- GLOBAL STYLES ---------------- */
+*{
+   margin:0;
+   padding:0;
+   box-sizing:border-box;
+   font-family:'Poppins', sans-serif;
+}
+body{
+   background:#0d0d0d;
+   color:#fff;
+}
+a{text-decoration:none;color:inherit;}
+
+/* ---------------- NAVIGATION BAR ---------------- */
+nav{
+   position:fixed;
+   top:0;
+   width:100%;
+   padding:20px 8%;
+   display:flex;
+   justify-content:space-between;
+   align-items:center;
+   background:rgba(0,0,0,0.4);
+   backdrop-filter:blur(10px);
+   z-index:1000;
+   transition:0.4s;
+}
+nav.scrolled{
+   background:#000;
+   padding:12px 8%;
+}
+nav .logo{
+   font-size:28px;
+   font-weight:700;
+   letter-spacing:1px;
+   color:#00eaff;
+}
+nav ul{
+   display:flex;
+   gap:30px;
+}
+nav ul li{
+   list-style:none;
+   font-size:18px;
+   cursor:pointer;
+   transition:0.3s;
+}
+nav ul li:hover{color:#00eaff;}
+
+/* ---------------- HERO SECTION ---------------- */
+.hero{
+   height:100vh;
+   display:flex;
+   align-items:center;
+   justify-content:space-between;
+   padding:0 8%;
+}
+.hero-text{
+   max-width:550px;
+}
+.hero-text h1{
+   font-size:55px;
+   font-weight:700;
+   line-height:1.2;
+}
+.hero-text h1 span{
+   color:#00eaff;
+}
+.hero-text p{
+   margin:20px 0;
+   font-size:18px;
+   color:#cfcfcf;
+}
+.hero-btn{
+   padding:12px 25px;
+   background:#00eaff;
+   color:#000;
+   border-radius:5px;
+   font-size:18px;
+   font-weight:600;
+   cursor:pointer;
+   transition:0.3s;
+}
+.hero-btn:hover{
+   background:#009bb8;
+}
+.hero img{
+   width:350px;
+   border-radius:50%;
+   border:5px solid #00eaff;
+   box-shadow:0 0 30px #00eaff;
+}
+
+/* ---------------- ABOUT SECTION ---------------- */
+section{
+   padding:80px 8%;
+}
+h2.section-title{
+   text-align:center;
+   font-size:40px;
+   margin-bottom:40px;
+   color:#00eaff;
+}
+.about-container{
+   display:flex;
+   gap:50px;
+   align-items:center;
+}
+.about-container img{
+   width:300px;
+   border-radius:10px;
+}
+.about-text{
+   font-size:18px;
+   line-height:1.7;
+   color:#d4d4d4;
+}
+
+/* ---------------- SKILLS ---------------- */
+.skills{
+   display:grid;
+   grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+   gap:20px;
+}
+.skill-box{
+   background:#111;
+   padding:20px;
+   text-align:center;
+   border-radius:10px;
+   border:1px solid #00eaff;
+   transition:0.3s;
+}
+.skill-box:hover{
+   background:#00eaff;
+   color:#000;
+}
+
+/* ---------------- PROJECTS ---------------- */
+.projects{
+   display:grid;
+   grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+   gap:30px;
+}
+.project-card{
+   background:#111;
+   padding:20px;
+   border-radius:10px;
+   border:1px solid #00eaff;
+   transition:0.3s;
+}
+.project-card:hover{
+   transform:translateY(-8px);
+   box-shadow:0 0 15px #00eaff;
+}
+.project-card h3{
+   margin-bottom:10px;
+}
+.project-card p{
+   color:#bfbfbf;
+}
+
+/* ---------------- CONTACT ---------------- */
+.contact-box{
+   background:#111;
+   padding:30px;
+   border-radius:10px;
+   max-width:500px;
+   margin:auto;
+}
+.contact-box input,
+.contact-box textarea{
+   width:100%;
+   padding:12px;
+   margin:10px 0;
+   border:none;
+   outline:none;
+   border-radius:5px;
+   background:#1a1a1a;
+   color:#fff;
+}
+.contact-btn{
+   width:100%;
+   background:#00eaff;
+   color:#000;
+   padding:12px;
+   border:none;
+   border-radius:5px;
+   cursor:pointer;
+   font-size:18px;
+}
+
+/* ---------------- FOOTER ---------------- */
+footer{
+   text-align:center;
+   padding:20px;
+   background:#000;
+   color:#bbb;
+   margin-top:40px;
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media(max-width:900px){
+   .hero{
+      flex-direction:column-reverse;
+      text-align:center;
+      gap:30px;
+   }
+   .about-container{
+      flex-direction:column;
+      text-align:center;
+   }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ---------------- NAVIGATION ---------------- -->
+<nav id="navbar">
+   <div class="logo">MyPortfolio</div>
+   <ul>
+      <li onclick="scrollToSection('home')">Home</li>
+      <li onclick="scrollToSection('about')">About</li>
+      <li onclick="scrollToSection('skills')">Skills</li>
+      <li onclick="scrollToSection('projects')">Projects</li>
+      <li onclick="scrollToSection('contact')">Contact</li>
+   </ul>
+</nav>
+
+<!-- ---------------- HERO SECTION ---------------- -->
+<section class="hero" id="home">
+   <div class="hero-text">
+      <h1>Hello, I'm <span>Mithra</span></h1>
+      <p>A Passionate Web Developer creating modern and beautiful websites.</p>
+      <button class="hero-btn" onclick="scrollToSection('projects')">View My Work</button>
+   </div>
+   <img src="WhatsApp Image 2025-11-25 at 8.20.42 PM.jpeg" alt="profile">
+</section>
+
+<!-- ---------------- ABOUT SECTION ---------------- -->
+<section id="about">
+   <h2 class="section-title">About Me</h2>
+   <div class="about-container">
+      <img src="https://via.placeholder.com/300" alt="about">
+      <p class="about-text">
+         I am a passionate and dedicated web developer with experience in HTML, CSS, JavaScript, and modern web technologies.  
+         I love building beautiful, functional, and responsive websites.  
+         My goal is to become a full-stack developer and create meaningful digital experiences.
+      </p>
+   </div>
+</section>
+
+<!-- ---------------- SKILLS ---------------- -->
+<section id="skills">
+   <h2 class="section-title">My Skills</h2>
+   <div class="skills">
+      <div class="skill-box">HTML</div>
+      <div class="skill-box">CSS</div>
+      <div class="skill-box">JavaScript</div>
+      <div class="skill-box">React</div>
+      <div class="skill-box">Bootstrap</div>
+      <div class="skill-box">Node.js</div>
+   </div>
+</section>
+
+<!-- ---------------- PROJECTS ---------------- -->
+<section id="projects">
+   <h2 class="section-title">My Projects</h2>
+   <div class="projects">
+      <div class="project-card">
+         <h3>Night time womwn cab safety system</h3>
+         <p>A cool web app built with HTML, CSS, and JavaScript.</p>
+      </div>
+      <div class="project-card">
+         <h3>AI  blueprintanalysis & designsugestions</h3>
+         <p>A responsive landing page designed with modern UI.</p>
+      </div>
+      <div class="project-card">
+         <h3>Portfolio</h3>
+         <p>An interactive dashboard using charts and animations.</p>
+      </div>
+   </div>
+</section>
+
+<!-- ---------------- CONTACT ---------------- -->
+<section id="contact">
+   <h2 class="section-title">Contact Me</h2>
+   <div class="contact-box">
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <textarea rows="4" placeholder="Your Message"></textarea>
+      <button class="contact-btn">Send Message</button>
+   </div>
+</section>
+
+<!-- ---------------- FOOTER ---------------- -->
+<footer>
+   © 2025 My Portfolio | Designed with ❤️
+</footer>
+
+<script>
+// Smooth Scroll
+function scrollToSection(id){
+   document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+// Change navbar on scroll
+window.addEventListener("scroll", () => {
+   const nav = document.getElementById("navbar");
+   if(window.scrollY > 50){
+      nav.classList.add("scrolled");
+   } else {
+      nav.classList.remove("scrolled");
+   }
+});
+</script>
+
+</body>
+</html>
