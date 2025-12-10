@@ -290,38 +290,80 @@ footer{
    </div>
 </section>
 
-<!-- ---------------- CONTACT ---------------- -->
+
+<!-- ---------------- CONTACT (UPDATED) ---------------- -->
 <section id="contact">
-   <h2 class="section-title">Contact Me</h2>
-   <div class="contact-box">
-      <input type="text" placeholder="Your Name">
-      <input type="email" placeholder="Your Email">
-      <textarea rows="4" placeholder="Your Message"></textarea>
-      <button class="contact-btn">Send Message</button>
-   </div>
+  <h2 style="text-align: center; color: #00eaff; padding-bottom: 40px;">Connect With Me</h2>
+
+  <div class="icon-slider" style="position: relative; width: 250px; margin: auto; text-align: center;">
+    
+    <button id="prevIcon" style="position: absolute; left: -60px; top: 50%; transform: translateY(-50%); font-size: 3rem; background:none; border:none; cursor:pointer; color:#00eaff;">&#8592;</button>
+
+    <div id="iconContainer" style="font-size: 8rem; height: 120px; display: flex; align-items: center; justify-content: center;">
+      <a href="https://www.linkedin.com/in/madhu-mithra-009167293" target="_blank" style="color:#0e76a8;"><i class="fab fa-linkedin"></i></a>
+    </div>
+
+    <button id="nextIcon" style="position: absolute; right: -60px; top: 50%; transform: translateY(-50%); font-size: 3rem; background:none; border:none; cursor:pointer; color:#00eaff;">&#8594;</button>
+  </div>
 </section>
 
 <!-- ---------------- FOOTER ---------------- -->
-<footer>
-   © 2025 My Portfolio | Designed with ❤️
+<footer style="background:#000; color: #bbb; padding:40px 20px; text-align:center;">
+  <h4 style="margin-bottom:20px;">Inspiring, Innovating & Empowering through <span style="color:#00eaff;">Code</span> & <span style="color:#00eaff;">AI</span></h4>
+  
+  <div style="margin-bottom: 20px; font-size:16px;">
+    <p>
+      <a href="#" id="backToTop" style="color:#00eaff; text-decoration:none; margin:0 10px;">Back to Top</a> | 
+      <a href="mailto:pushpanathan80980@gmail.com" style="color:#00eaff; text-decoration:none; margin:0 10px;">Say Hello</a> | 
+     
+  </div>
+
+  <p>Made with ❤️ and <span style="color:#00eaff;"><></span> by Madhu Mithra</p>
+  <p>© <span id="year"></span> Madhu Mithra | Built with HTML & CSS</p>
 </footer>
 
 <script>
-// Smooth Scroll
-function scrollToSection(id){
+
+
+  function scrollToSection(id){
    document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-// Change navbar on scroll
-window.addEventListener("scroll", () => {
-   const nav = document.getElementById("navbar");
-   if(window.scrollY > 50){
-      nav.classList.add("scrolled");
-   } else {
-      nav.classList.remove("scrolled");
-   }
+window.addEventListener("scroll", ()=>{
+   document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
 });
+
+/* Icon Slider */
+const icons = [
+  `<a href="https://www.linkedin.com/in/madhu-mithra-009167293" target="_blank" style="color:#0e76a8;"><i class="fab fa-linkedin"></i></a>`,
+  `<a href="mailto:pushpanathan80980@gmail.com" style="color:#ea4335;"><i class="fas fa-envelope"></i></a>`,
+  `<a href="https://github.com" target="_blank" style="color:#fff;"><i class="fab fa-github"></i></a>`,
+  `<a href="tel:7806992795" style="color:#25D366;"><i class="fab fa-whatsapp"></i></a>`
+];
+
+let index = 0;
+const iconContainer = document.getElementById("iconContainer");
+
+document.getElementById("nextIcon").onclick = () => {
+  index = (index + 1) % icons.length;
+  iconContainer.innerHTML = icons[index];
+};
+
+document.getElementById("prevIcon").onclick = () => {
+  index = (index - 1 + icons.length) % icons.length;
+  iconContainer.innerHTML = icons[index];
+};
+
+/* Footer year */
+document.getElementById("year").innerText = new Date().getFullYear();
+
+/* Back to top */
+document.getElementById("backToTop").onclick = (e)=>{
+  e.preventDefault();
+  window.scrollTo({top:0, behavior:"smooth"});
+}; 
 </script>
 
 </body>
+
 </html>
